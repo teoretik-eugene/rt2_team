@@ -7,6 +7,14 @@ WHERE NUM_Z = 109208
 GROUP BY S.NUM_Z,D.NAME
 ORDER BY DISP_NAME
 
+-- 2 На какие дисциплины пришел студент в семестре
+SELECT S.NAME, D.NAME DISP_NAME
+FROM STUDENTS S JOIN ATTENDANCE A ON S.ID = A.STUDENT_ID
+JOIN DISCIPLINES_PROFESSORS DP ON A.DISC_PROF_ID = DP.ID
+JOIN DISCIPLINES D ON DP.DISCIPLINE_ID = D.ID
+GROUP BY S.NAME,D.NAME
+ORDER BY S.NAME
+
 -- 3 Разделение по профессорам какие дисциплины есть
 SELECT pr.NAME prof_name, pr.LAST_NAME prof_last_name, disc.NAME disc_name
 from PROFESSOR pr
