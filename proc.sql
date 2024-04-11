@@ -1,3 +1,4 @@
+-- Добавление существующего препода и дисциплины
 CREATE OR REPLACE PROCEDURE INSERT_PROF 
     (PROF_NAME IN VARCHAR2, PROF_LAST_NAME IN VARCHAR2, DISC_NAME IN VARCHAR2)
     IS
