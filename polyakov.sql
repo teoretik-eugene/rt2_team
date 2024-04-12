@@ -66,3 +66,54 @@ AND Product.maker = 'B'
 
 
 -- 8
+----
+
+--9
+Select DISTINCT
+maker
+from Product JOIN PC ON PC.model = Product.model
+WHERE PC.speed >= 450
+
+
+-- 10
+Select model, price
+FROM Printer
+WHERE price = (SELECT MAX(price) from Printer)
+
+
+-- 11 
+Select AVG(speed)
+FROM PC
+
+
+-- 12
+SELECT AVG(speed)
+FROM Laptop
+Where price > 1000
+
+
+--13
+Select AVG(PC.speed)
+FROM Product as pr JOIN PC ON pr.model = PC.model AND pr.maker = 'A'
+
+
+-- 14
+Select
+Classes.class,
+Ships.name,
+Classes.country
+from Classes JOIN Ships ON Classes.class = Ships.class AND Classes.numGuns >= 10
+
+
+-- 15
+Select hd FROM PC
+Group By hd 
+Having COUNT(*) >= 2
+
+
+-- 16
+Select pc1.model, pc2.model, pc1.speed, pc1.ram
+from PC pc1 join PC pc2 
+on pc1.speed = pc2.speed and pc1.ram = pc2.ram 
+and pc1.model != pc2.model
+order by pc1.model asc
