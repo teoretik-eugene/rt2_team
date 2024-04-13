@@ -118,3 +118,9 @@ where pc1.speed = pc2.speed and pc1.ram = pc2.ram
 and pc1.model != pc2.model and pc1.model > pc2.model
 
 -- 17
+select distinct pr.type, l.model, l.speed
+from product as pr join laptop as l on l.model = pr.model
+where l.speed < all (select speed from pc)
+
+
+-- 18 
