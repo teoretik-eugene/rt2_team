@@ -112,8 +112,9 @@ Having COUNT(*) >= 2
 
 
 -- 16
-Select pc1.model, pc2.model, pc1.speed, pc1.ram
-from PC pc1 join PC pc2 
-on pc1.speed = pc2.speed and pc1.ram = pc2.ram 
-and pc1.model != pc2.model
-order by pc1.model asc
+Select distinct pc1.model, pc2.model, pc1.speed, pc1.ram
+from PC pc1, PC pc2
+where pc1.speed = pc2.speed and pc1.ram = pc2.ram
+and pc1.model != pc2.model and pc1.model > pc2.model
+
+-- 17
