@@ -124,3 +124,50 @@ where l.speed < all (select speed from pc)
 
 
 -- 18 
+select distinct maker, price from product pdct
+join printer pr on pdct.model = pr.model
+where color = 'y'and 
+pr.price = (select min(price) from printer where color = 'y')
+
+
+-- 19
+Select maker, avg(screen) from product pdct
+join laptop lp on pdct.model = lp.model
+group by maker
+
+
+-- 20
+select maker, count(*) count_model from product
+where type = 'PC'
+group by maker
+having count(*) >= 3
+
+
+-- 21
+Select 
+maker,
+max(price)
+FROM Product as pr JOIN PC as pc ON pr.model = pc.model
+group by maker
+
+
+-- 22
+select speed, avg(price) from PC
+where speed > 600
+group by speed
+
+
+-- 23
+select maker from product pdct
+join laptop lp on pdct.model = lp.model
+where speed >= 750
+intersect
+select maker from product pdct
+join pc on pdct.model = pc.model
+where speed >= 750
+
+
+-- 24
+-- решил, но надо бы попробовать заново
+
+-- 25
