@@ -170,4 +170,10 @@ where speed >= 750
 -- 24
 -- решил, но надо бы попробовать заново
 
--- 25
+-- 25 -- ne doreshal
+select maker from product where type = 'Printer'
+
+select maker, min(RAM), max(speed) from product pdct
+join pc on pdct.model = pc.model
+group by maker
+
