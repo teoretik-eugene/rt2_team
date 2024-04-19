@@ -177,3 +177,31 @@ select maker, min(RAM), max(speed) from product pdct
 join pc on pdct.model = pc.model
 group by maker
 
+-- 26
+select avg(price) from 
+(select maker, price, type from product pdct
+join pc on pdct.model = pc.model
+where maker = 'A'
+union all
+select maker, price, type from product pdct
+join laptop lp on pdct.model = lp.model
+where maker = 'A') pr
+
+
+-- 27
+select maker, avg(hd) Avg_hd from product pdct
+join pc on pdct.model = pc.model
+where maker in (select maker from product pdct where type = 'Printer')
+group by maker
+
+
+-- 28
+select count(maker) qty from 
+(select maker, count(model) model_count
+from product pdct
+group by maker
+having count(model) = 1) mk
+
+
+
+
