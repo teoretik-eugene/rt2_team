@@ -190,12 +190,16 @@ from price_out
 where price = (select MAX(price) from price_out)
 
 
--- 25 -- ne doreshal
-select maker from product where type = 'Printer'
+-- 25
+select distinct maker
+from product
+where model in (select model from pc
+where ram = (select min(ram) from pc)
+and speed = (select max(speed) from pc
+where ram = (select min(ram) from pc)))
+and
+maker in (select maker from product where type='printer')
 
-select maker, min(RAM), max(speed) from product pdct
-join pc on pdct.model = pc.model
-group by maker
 
 -- 26
 select avg(price) from 
