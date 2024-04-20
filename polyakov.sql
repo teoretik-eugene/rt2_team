@@ -224,4 +224,13 @@ having count(model) = 1) mk
 
 
 
+-- 29
+select o.point, o.date, inc, out
+from outcome_o o
+left join income_o i on o.point = i.point and o.date = i.date
+union
+select i.point, i. date, inc, out
+from income_o i
+left join outcome_o o on i.point=o.point and i.date = o.date
+
 
