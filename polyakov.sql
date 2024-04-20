@@ -66,7 +66,14 @@ AND Product.maker = 'B'
 
 
 -- 8
-----
+SELECT DISTINCT maker
+FROM product
+WHERE type = 'pc'
+EXCEPT
+SELECT DISTINCT product.maker
+FROM product
+Where type = 'laptop'
+
 
 --9
 Select DISTINCT
