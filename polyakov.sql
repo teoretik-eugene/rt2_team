@@ -234,3 +234,14 @@ from income_o i
 left join outcome_o o on i.point=o.point and i.date = o.date
 
 
+--30
+
+select ot.point, ot.date, ot.outcome, it.income from
+(select o.point, o.date, sum(out) outcome
+from outcome o
+group by o.point, o.date) ot
+left join
+(select i.point, i.date, sum(i.inc) income
+from income i
+group by i.point, i.date) it
+on ot.point = it.point and ot.date = it.date
