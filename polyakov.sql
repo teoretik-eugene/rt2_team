@@ -175,7 +175,20 @@ where speed >= 750
 
 
 -- 24
--- решил, но надо бы попробовать заново
+with price_out as (
+select model, price
+from pc
+UNION
+select model, price
+from Laptop
+UNION
+select model, price
+FROM Printer
+)
+select model
+from price_out 
+where price = (select MAX(price) from price_out)
+
 
 -- 25 -- ne doreshal
 select maker from product where type = 'Printer'
